@@ -53,7 +53,6 @@ Dart sangat ketat terhadap penulisan syntax. Keyword seperti `if`, `else if`, da
 ![Langkah 1 - Fix](img/fix1.png)
 
 ### Output Setelah Diperbaiki:
-```
 
 ![Langkah 1 - Fix](img/fixoutput1.png)
 
