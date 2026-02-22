@@ -12,12 +12,6 @@
 
 ---
 
-## Tujuan Praktikum
-
-Mempelajari dan menerapkan perulangan menggunakan statement `for` serta statement kendali `break` dan `continue` dalam bahasa pemrograman Dart.
-
----
-
 ## Langkah 1: Membuat Kode Program For Loop
 
 Ketik atau salin kode program berikut ke dalam fungsi `main()`:
