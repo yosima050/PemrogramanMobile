@@ -1,6 +1,6 @@
 # #04 | Pengantar Bahasa Pemrograman Dart - Bagian 3
 
-## Praktikum 3: Eksperimen Tipe Data Maps
+## Praktikum 4: Eksperimen Tipe Data List: Spread dan Control-flow Operators
 
 ## Identitas Mahasiswa
 
