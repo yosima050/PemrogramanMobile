@@ -37,3 +37,8 @@ A new Flutter project.
 
 ![Langkah 5](images/Prak5/05.png)
 
+### Hasil Langkah 6:
+
+![Langkah 6A](images/Prak5/06A.png)
+![Langkah 6B](images/Prak5/06B.png)
+
