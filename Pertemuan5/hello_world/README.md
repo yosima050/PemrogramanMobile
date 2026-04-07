@@ -4,6 +4,9 @@ A new Flutter project.
 
 ![Langkah 12](images/01.png)
 
+## Hasil pada perangkat fisik (device Android/iOS)
+![Device](images/04.png)
+
 ## Praktikum 4: Menerapkan Widget Dasar
 
 ### Hasil Langkah 1:
