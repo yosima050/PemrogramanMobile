@@ -2,10 +2,14 @@
 
 A new Flutter project.
 
-(images/01.png)
+![Langkah 12](images/01.png)
 
 ## Praktikum 4: Menerapkan Widget Dasar
 
 ### Hasil Langkah 1:
 
 ![Langkah 1](images/02.png)
+
+### Hasil Langkah 2:
+
+![Langkah 2](images/03.png)
