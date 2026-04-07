@@ -20,3 +20,7 @@ A new Flutter project.
 
 ![Langkah 1](images/Prak5/01.png)
 
+### Hasil Langkah 2:
+
+![Langkah 2](images/Prak5/02.png)
+
