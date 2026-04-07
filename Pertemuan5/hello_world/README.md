@@ -13,3 +13,10 @@ A new Flutter project.
 ### Hasil Langkah 2:
 
 ![Langkah 2](images/03.png)
+
+## Praktikum 5: Menerapkan Widget Material Design dan iOS Cupertino
+
+### Hasil Langkah 1:
+
+![Langkah 1](images/Prak5/01.png)
+
