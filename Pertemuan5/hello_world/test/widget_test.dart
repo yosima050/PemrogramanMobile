@@ -1,30 +1,53 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:hello_world/main.dart';
+import 'package:hello_world/combined_pertemuan5.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('combined app shows generator and supports favorite flow', (
+    WidgetTester tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(1000, 800));
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    await tester.pumpWidget(const CombinedPertemuan5App());
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    expect(find.text('Like'), findsOneWidget);
+    expect(find.text('Next'), findsOneWidget);
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    await tester.tap(find.text('Like'));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Favorites'));
+    await tester.pumpAndSettle();
+
+    expect(find.textContaining('You have 1 favorites:'), findsOneWidget);
+  });
+
+  testWidgets('combined app shows date picker and basic widgets page', (
+    WidgetTester tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(1000, 800));
+
+    await tester.pumpWidget(const CombinedPertemuan5App());
+
+    await tester.tap(find.text('Date Picker'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Pilih Tanggal'), findsOneWidget);
+
+    await tester.tap(find.text('Basic Widgets'));
+    await tester.pumpAndSettle();
+
+    expect(
+      find.text(
+        'Nama saya Yosep Bima Aprillian, sedang belajar Pemrograman Mobile',
+      ),
+      findsOneWidget,
+    );
+    expect(find.text('Total likes FAB: 0'), findsOneWidget);
+
+    await tester.tap(find.byIcon(Icons.thumb_up));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Total likes FAB: 1'), findsOneWidget);
   });
 }
