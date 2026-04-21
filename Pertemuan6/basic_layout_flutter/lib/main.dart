@@ -8,30 +8,30 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Layout Step 4',
+      title: 'Flutter Layout Step 5',
       home: Scaffold(
-        appBar: AppBar(title: const Text('Step 4: Column')),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(10),
-                color: Colors.orange,
-                child: const Text('Top'),
+        appBar: AppBar(title: const Text('Step 5: Expanded & Image')),
+        body: Row(
+          children: [
+            Expanded(
+              child: Image.network(
+                'images/batu1.png',
+                fit: BoxFit.cover,
               ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                color: Colors.purple,
-                child: const Text('Middle'),
+            ),
+            Expanded(
+              child: Image.network(
+                'images/batu2.png',
+                fit: BoxFit.cover,
               ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                color: Colors.teal,
-                child: const Text('Bottom'),
+            ),
+            Expanded(
+              child: Image.network(
+                'images/batu3.png',
+                fit: BoxFit.cover,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
