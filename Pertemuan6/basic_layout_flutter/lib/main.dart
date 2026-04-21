@@ -8,13 +8,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Layout Step 1',
+      title: 'Flutter Layout Step 2',
       home: Scaffold(
-        appBar: AppBar(title: const Text('Step 1: Hello World')),
+        appBar: AppBar(title: const Text('Step 2: Container')),
         body: Center(
-          child: Text(
-            'Hello World',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          child: Container(
+            padding: const EdgeInsets.all(20),
+            margin: const EdgeInsets.all(10),
+            color: Colors.blue,
+            child: Text(
+              'Hello World with Container',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
           ),
         ),
       ),
