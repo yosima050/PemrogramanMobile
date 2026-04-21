@@ -29,16 +29,52 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Layout Step 6',
+      title: 'Flutter Layout Step 7',
       home: Scaffold(
-        appBar: AppBar(title: const Text('Step 6: Button Column')),
-        body: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        appBar: AppBar(title: const Text('Step 7: Nested Layout')),
+        body: Container(
+          padding: const EdgeInsets.all(16),
+          child: Column(
             children: [
-              _buildButtonColumn(Colors.blue, Icons.call, 'CALL'),
-              _buildButtonColumn(Colors.blue, Icons.near_me, 'ROUTE'),
-              _buildButtonColumn(Colors.blue, Icons.share, 'SHARE'),
+              // Gambar
+              Image.network(
+                'images/batu2.png',
+                height: 200,
+                fit: BoxFit.cover,
+              ),
+
+              // Judul & Rating
+              Container(
+                padding: const EdgeInsets.all(16),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            'Oeschinen Lake Campground',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Text('Kandersteg, Switzerland', style: TextStyle(color: Colors.grey)),
+                        ],
+                      ),
+                    ),
+                    Icon(Icons.star, color: Colors.red),
+                    const Text('41'),
+                  ],
+                ),
+              ),
+
+              // Button Section
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _buildButtonColumn(Colors.blue, Icons.call, 'CALL'),
+                  _buildButtonColumn(Colors.blue, Icons.near_me, 'ROUTE'),
+                  _buildButtonColumn(Colors.blue, Icons.share, 'SHARE'),
+                ],
+              ),
             ],
           ),
         ),
