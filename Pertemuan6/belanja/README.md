@@ -20,7 +20,7 @@
 
 ### Hasil Langkah 7:
 ![Hasil](images/03.png)
-Lalu
+### Lalu
 ![Hasil](images/04.png)
 
 ## Tugas Praktikum 2
@@ -33,7 +33,7 @@ Lalu
 
 ### Soal 3:
 ![Hasil](images/07.png)
-Dan
+### Dan
 ![Hasil](images/08.png)
 
 ### Soal 4:
