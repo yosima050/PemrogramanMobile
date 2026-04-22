@@ -14,7 +14,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Aplikasi Belanja',
       debugShowCheckedModeBanner: false,
-      
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        useMaterial3: true,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.blue,
+          elevation: 4,
+        ),
+      ),
       initialRoute: '/',
       
       routes: {
