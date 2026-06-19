@@ -168,3 +168,93 @@
 > - Jika Anda tidak melihat animasi loading tampil, kemungkinan itu berjalan sangat cepat. Tambahkan delay pada method getPosition() dengan kode `await Future.delayed(const Duration(seconds: 3));`
 > - Apakah Anda mendapatkan koordinat GPS ketika run di browser? Mengapa demikian?
 - **Jawab**: Ya, aplikasi tetap bisa mendapatkan koordinat lokasi meskipun dijalankan melalui browser (Flutter Web). Hal ini dimungkinkan karena *browser* modern (seperti Chrome, Edge, Safari) memiliki fitur **HTML5 Geolocation API** bawaan. Walaupun PC atau laptop kita rata-rata tidak memiliki sensor perangkat keras GPS fisik layaknya *smartphone*, *browser* bisa "menebak" atau memperkirakan posisi kita berdasarkan jaringan (*Network-based positioning*) melalui data-data seperti alamat IP publik dan lokasi jaringan Wi-Fi di sekitar. *Package* `geolocator` di Flutter cukup pintar untuk memanggil API *browser* ini secara otomatis ketika mendeteksi aplikasinya di-run di platform web.
+
+# Praktikum 7: Manajemen Future dengan FutureBuilder
+
+## Langkah 1: Modifikasi method getPosition()
+![](images/36.png)
+
+## Langkah 2: Tambah variabel
+![](images/37.png)
+
+## Langkah 3: Tambah initState()
+![](images/38.png)
+
+## Langkah 4: Edit method build()
+![](images/39.png)
+
+> **Soal 13**
+> - Apakah ada perbedaan UI dengan praktikum sebelumnya? Mengapa demikian?
+- **Jawab**: Secara *User Interface* (UI) yang tampil di layar, **tidak ada perbedaan yang terlihat**. Keduanya sama-sama menampilkan indikator putaran *loading* selama beberapa detik, lalu kemudian menampilkan teks koordinat lokasi. Namun, perbedaan yang sangat besar terjadi di balik layar (secara struktur kode). Pada praktikum sebelumnya, kita mengelola status *loading* secara manual dengan memanggil `setState()` berulang kali. Sedangkan pada praktikum 7 ini, kita menyerahkan pengelolaan tersebut sepenuhnya kepada widget `FutureBuilder`. `FutureBuilder` akan secara cerdas memantau *state* (status) dari *Future* dan secara otomatis me-*rebuild* (menggambar ulang) UI-nya sendiri saat *Future* berganti dari status `waiting` menjadi `done`, sehingga kode kita menjadi jauh lebih bersih, efisien, dan kita tidak perlu repot memanggil `setState` secara manual.
+![](images/40.gif)
+
+## Langkah 5: Tambah handling error
+![](images/41.png)
+
+> **Soal 14**
+> - Apakah ada perbedaan UI dengan langkah sebelumnya? Mengapa demikian?
+- **Jawab**: **Tidak ada perbedaan UI** yang terlihat jika aplikasi berjalan dengan normal. Layar akan tetap menampilkan animasi *loading* lalu diikuti dengan teks koordinat. Hal ini terjadi karena kode yang baru saja kita tambahkan hanyalah sebuah blok penanganan kesalahan (*error handling*). Kondisi `if (snapshot.hasError)` bertindak sebagai jaring pengaman (fallback) yang hanya akan tereksekusi dan merubah UI (menampilkan teks *"Something terrible happened!"*) **apabila** terjadi kegagalan saat mengambil lokasi (misalnya layanan GPS perangkat dimatikan atau *Exception* sengaja dilempar). Karena metode `getPosition()` saat ini berhasil merespons tanpa masalah, maka blok *error* tersebut dilewati dan hasil UI yang ditampilkan persis sama dengan langkah sebelumnya.
+
+# Praktikum 8: Navigation route dengan Future Function
+
+## Langkah 1: Buat file baru navigation_first.dart
+![](images/42.png)
+
+## Langkah 2: Isi kode navigation_first.dart
+![](images/43.png)
+
+> **Soal 15**
+> - Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
+> ![](images/44.png)
+> - Silakan ganti dengan warna tema favorit Anda.
+
+## Langkah 3: Tambah method di class _NavigationFirstState
+![](images/45.png)
+
+## Langkah 4: Buat file baru navigation_second.dart
+![](images/46.png)
+
+## Langkah 5: Buat class NavigationSecond dengan StatefulWidget
+![](images/47.png)
+
+## Langkah 6: Edit main.dart
+![](images/48.png)
+
+## Langkah 8: Run
+![](images/49.gif)
+
+> **Soal 16**
+> - Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+  - **Yang terjadi**: Ketika salah satu tombol warna diklik pada layar kedua, layar tersebut langsung menutup (hilang dari pandangan), dan layar pertama akan muncul kembali dengan warna latar belakang yang telah berubah seketika sesuai warna tombol yang dipilih.
+  - **Mengapa demikian**: Hal ini merupakan wujud nyata dari konsep *Future Function* dalam sistem Route (navigasi). Pemanggilan `Navigator.push()` pada layar pertama disematkan *keyword* `await`, yang berarti aplikasi "menunggu" data/nilai kembalian (*return value*) yang dihasilkan oleh layar kedua. Di sisi lain, pada layar kedua, saat tombol diklik ia memanggil `Navigator.pop(context, color);`. Fungsi `pop` ini selain menutup layar, juga memiliki kapabilitas untuk membawa "oleh-oleh" berupa variabel `color` yang kita kirimkan kembali kepada layar pertama yang sedang menunggu tadi. Setelah warna diterima, baris `setState(() {});` pun langsung tereksekusi sehingga layar pertama tergambar ulang (*rebuild*) menggunakan warna yang baru.
+> - Gantilah 3 warna pada langkah 5 dengan warna favorit Anda! (Biru, Merah, dan Ungu)
+![](images/50.png)
+![](images/51.gif)
+
+# Praktikum 9: Memanfaatkan async/await dengan Widget Dialog
+
+## Langkah 1: Buat file baru navigation_dialog.dart
+![](images/52.png)
+
+## Langkah 2: Isi kode navigation_dialog.dart
+![](images/53.png)
+
+## Langkah 3: Tambah method async
+![](images/54.png)
+
+## Langkah 4: Panggil method di ElevatedButton
+![](images/55.png)
+
+## Langkah 5: Edit main.dart
+![](images/56.png)
+
+## Langkah 6: Run
+![](images/57.gif)
+
+> **Soal 17**
+> - Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+  - **Yang terjadi**: Ketika tombol "Pick Color" diklik, sebuah *pop-up dialog* muncul. Ketika salah satu tombol warna di dalam dialog tersebut diklik (misalnya *Blue*), kotak dialog akan menutup dan warna latar belakang dari layar utama langsung berubah menjadi warna yang dipilih tersebut.
+  - **Mengapa demikian**: Hal ini dimungkinkan karena metode `showDialog` di Flutter pada dasarnya mengembalikan sebuah *Future* (sama seperti navigasi layar biasa). Saat kita mengeklik tombol pada dialog, method `Navigator.pop(context, color)` dijalankan, yang bertujuan untuk menutup dialog sekaligus "mengirimkan" variabel `color` (sebagai nilai kembalian) kembali ke pemanggil `showDialog`. Karena pemanggilnya memiliki instruksi `await showDialog(...)`, baris kode di bawahnya (yaitu `setState(() {});`) baru akan dieksekusi **setelah** dialog tersebut benar-benar ditutup dan nilainya diterima, yang pada akhirnya memicu layar untuk menggambar ulang antarmukanya (*rebuild*) dengan menggunakan *state* warna yang baru diset tersebut.
+> - Gantilah 3 warna pada langkah 3 dengan warna favorit Anda!
+![](images/58.png)
+![](images/57.gif)
